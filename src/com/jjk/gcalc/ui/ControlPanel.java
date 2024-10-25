@@ -19,39 +19,6 @@ public class ControlPanel extends JPanel {
         add(viewportLabel, gbc.x(0).y(0).width(2));
         add(new JSeparator(), gbc.y(1));
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         // "Width" label + Spinner
         JLabel widthLabel = new JLabel("Width");
         widthLabel.setHorizontalAlignment(SwingConstants.RIGHT);
