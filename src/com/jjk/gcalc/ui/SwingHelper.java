@@ -5,6 +5,24 @@ import java.awt.*;
 
 public class SwingHelper {
 
+    public static JFrame createWindow(String title)
+    {
+        JFrame frame = new JFrame(title);
+        frame.setSize(720, 480);
+        frame.setLocationRelativeTo(null);
+        return frame;
+    }
+
+    public static void quickPreview(Component component) {
+        JFrame frame = new JFrame("Quick Preview");
+        frame.add(component);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.pack();
+//        frame.setSize(720, 480);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+    }
+
     public static void scaleFont(JComponent component) {
         scaleFont(component, 1.25f);
     }
@@ -15,83 +33,68 @@ public class SwingHelper {
         component.setFont(scaledFont);
     }
 
+    public static class GBC extends GridBagConstraints {
+        public GBC() {
+            pad(4).insets(4);
+        }
 
-    static GridBagConstraints makeGBC(int x, int y) {
-        return makeGBC(x, y, 1, 1);
-    }
-
-    static GridBagConstraints makeGBC(int x, int y, int w, int h) {
-        return makeGBC(x, y, w, h, 0);
-    }
-
-    static GridBagConstraints makeGBC(int x, int y, int w, int h, int p) {
-        return makeGBC(x, y, w, h, p, GridBagConstraints.NONE);
-    }
-
-    static GridBagConstraints makeGBC(int x, int y, int w, int h, int p, int f) {
-        return makeGBC(x, y, w, h, p, f, GridBagConstraints.CENTER);
-    }
-    static GridBagConstraints makeGBC(int x, int y, int w, int h, int p, int f, int a) {
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.gridx = x;
-        gbc.gridy = y;
-        gbc.gridwidth = w;
-        gbc.gridheight = h;
-        gbc.fill = f;
-        gbc.anchor = a;
-        gbc.ipadx = gbc.ipady = p;
-        gbc.insets = new Insets(p, p, p, p);
-        return gbc;
-    }
-
-    static class GBC extends GridBagConstraints {
-        GBC x(int x) {
+        public GBC x(int x) {
             gridx = x;
             return this;
         }
-        GBC y(int y) {
+        public GBC y(int y) {
             gridy = y;
             return this;
         }
 
-        GBC width(int w) {
+        public GBC width(int w) {
             gridwidth = w;
             return this;
         }
-        GBC height(int h) {
+        public GBC height(int h) {
             gridheight = h;
             return this;
         }
 
-        GBC fill(int f) {
+        public GBC fill(int f) {
             fill = f;
             return this;
         }
-        GBC anchor(int a) {
+        public GBC anchor(int a) {
             anchor = a;
             return this;
         }
 
-        GBC pad(int p) {
+        public GBC pad(int p) {
             return padx(p).pady(p);
         }
-        GBC padx(int px) {
+        public GBC padx(int px) {
             ipadx = px;
             return this;
         }
-        GBC pady(int py) {
+        public GBC pady(int py) {
             ipady = py;
             return this;
         }
 
-        GBC insets(int p) {
+        public GBC insets(int p) {
             insets = new Insets(p, p, p, p);
             return this;
         }
-        GBC insets(int p, int q, int r, int s) {
+        public GBC insets(int p, int q, int r, int s) {
             insets = new Insets(p, q, r, s);
             return this;
         }
+
+        public GBC weightx(double wx) {
+            weightx = wx;
+            return this;
+        }
+        public GBC weighty(double wy) {
+            weighty = wy;
+            return this;
+        }
+
 
 
     }
